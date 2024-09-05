@@ -1,0 +1,28 @@
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+}
+
+nav ul li a:hover {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(61, 56, 56);
+    color: white;
+}
+
+/* Default width for small screens */
+.offcanvas {
+    /* Adjust this value for small screens */
+    width: 250px;
+    /* Change transition time here */
+    /* transition: transform 0.7s ease-in-out; */
+}
+
+/* Adjust width for larger screens */
+@media (min-width: 992px) {
+    .offcanvas {
+        width: 300px;
+        /* Adjust this value for large screens */
+    }
+}

@@ -1,0 +1,17 @@
+label {
+    font-weight: bold;
+}
+
+span {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    transition: font-size 0.3s ease-in-out;
+}
+
+a:hover {
+    text-decoration: underline;
+    font-size: large;
+}

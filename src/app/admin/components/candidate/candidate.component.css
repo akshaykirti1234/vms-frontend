@@ -1,0 +1,27 @@
+.parent {
+    background-image: url("https://img.freepik.com/free-vector/gradient-black-background-with-wavy-lines_23-2149146010.jpg?t=st=1725275757~exp=1725279357~hmac=96d59a5a56da4fffd6f3c21ab386cba9135e3032915678f498a7a2eec2d6142e&w=740");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.table tr,
+.table td,
+.table th {
+    color: white;
+    background-color: transparent !important;
+}
+
+select {
+    background-color: transparent;
+    color: white;
+    /* Adjust text color as needed */
+    border: 1px solid white;
+    /* Optional: to make the border visible */
+}
+
+select option {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Semi-transparent background */
+    color: black;
+    /* Adjust text color as needed */
+}

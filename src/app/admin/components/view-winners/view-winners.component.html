@@ -1,0 +1,23 @@
+<div class="card mt-5 m-auto w-50 shadow">
+    <div class="card-header text-center">
+        <h3>Winners</h3>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table-info">
+            <thead>
+                <tr>
+                    <th>Post</th>
+                    <th>Winner</th>
+                    <th>Total Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let winner of winners">
+                    <td>{{winner. post_name }}</td>
+                    <td>{{winner. candidate_name }}</td>
+                    <td>{{winner. vote_count }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

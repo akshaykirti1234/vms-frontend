@@ -1,0 +1,47 @@
+<div class="container m-auto mt-5 row row-cols-lg-2 row-cols-md-2 row-cols-sm-1  p-3" style="height: 50vh;">
+    <div>
+        <div class="text-primary">
+            <h2>Create Post</h2>
+            <hr>
+        </div>
+        <div class="mt-4">
+            <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+                <label for="" class="fw-bold">Enter Post Name</label>
+                <input type="text" formControlName="postName" class="form-control w-75" name="" id="">
+                <div class="mt-2 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-danger">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="errorMessage" class="mt-4 alert alert-danger">
+            {{errorMessage}}
+        </div>
+    </div>
+    <div class="overflow-scroll" style="max-height: 100%; overflow-y: auto; overflow-x: hidden;">
+        <div class="text-primary">
+            <h2>Manage Posts</h2>
+            <hr>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sl#</th>
+                    <th>Post Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of postDetails; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{post.postName}}</td>
+                    <td class="d-flex gap-2">
+                        <button class="btn btn-primary" (click)="editPost(post.postId)">Edit</button>
+                        <button class="btn btn-warning" (click)="deletePost(post.postId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

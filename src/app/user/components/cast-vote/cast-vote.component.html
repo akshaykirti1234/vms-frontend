@@ -1,0 +1,25 @@
+<div class="container mt-5 m-auto row g-0 row-cols-lg-2 row-cols-1 shadow " style="height: 70vh;">
+    <div class="p-4  rounded-start" style="background-color: lavender;">
+        <form [formGroup]="castVoteForm" class="w-75" (ngSubmit)="saveVote()">
+            <div class="m-auto mt-3">
+                <h4 class="p-2 text-white text-center rounded" style="background-color: teal;">Choose Post</h4>
+                <select formControlName="postId" id="" class="form-select" (change)="getCandidateByPostId()">
+                    <option value="">-Select-</option>
+                    <option *ngFor="let post of postList" [value]="post.postId">{{post.postName}}</option>
+                </select>
+            </div>
+            <div class="m-auto mt-3 form-check h5" *ngFor="let candidate of candidateList; let i=index">
+                <label class="form-check-label">{{ candidate.user.userName }}</label>
+                <input type="radio" formControlName="candidateId" class="form-check-input"
+                    [value]="candidate.candidateId" class="form-check-input border border-2 border-primary rounded-1">
+            </div>
+            <div *ngIf="castVoteForm.get('candidateId').value" class="m-auto mt-3">
+                <button type="submit" class="btn w-100" style="background-color: teal; color: white;">Vote</button>
+            </div>
+        </form>
+    </div>
+    <div class="h-100 d-lg-block d-none">
+        <img src="https://images.pexels.com/photos/4669113/pexels-photo-4669113.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Voting Image" class="img-fluid h-100 rounded-end object-fit-cover">
+    </div>
+</div>

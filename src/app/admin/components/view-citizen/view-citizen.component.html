@@ -1,0 +1,35 @@
+<div class="p-1 parent min-vh-100">
+    <div class="container my-3">
+        <div class="mb-3 ms-auto w-25">
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Search by name or email" class="form-control">
+        </div>
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 ">
+            <div class="col" *ngFor="let citizen of filteredCitizens">
+                <div id="citizenContainer" class="d-flex flex-column border border-1 border-dark rounded h-100">
+                    <div class="row g-0 flex-grow-1">
+                        <div class="col-4">
+                            <img [src]="getUserPhoto(citizen.photoPath)" class="img-fluid rounded-start" alt=""
+                                style="height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="col-8 p-3 d-flex flex-column text-white">
+                            <p>{{citizen.userName}}</p>
+                            <p>{{citizen.userPhone}}</p>
+                            <p>{{citizen.userEmail}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button (click)="permitCitizen(citizen.userId)" class="btn rounded-0 btn-dark w-100"
+                            [disabled]="citizen.permit">
+                            {{ citizen.permit ? 'Permitted' : 'Permit' }}
+                            <i class="fas fa-check-circle" *ngIf="citizen.permit"
+                                title="You have already completed this questionnaire"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

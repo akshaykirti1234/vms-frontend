@@ -1,0 +1,15 @@
+#citizenContainer {
+    box-shadow: 2px 2px 10px gray;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#citizenContainer:hover {
+    box-shadow: none;
+}
+
+.parent {
+    background-image: url("https://miro.medium.com/max/700/1*hyamvB4egtb6Xziwl-o1gQ.jpeg");
+    /* background-color: #27292B; */
+    background-size: cover;
+    background-repeat: no-repeat;
+}

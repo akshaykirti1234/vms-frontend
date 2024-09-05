@@ -1,0 +1,82 @@
+<div id="parent" class="pt-1">
+    <div class="container m-auto mt-5 row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 shadow rounded">
+        <div class="">
+            <div class="p-2 text-center rounded text-primary">
+                <h3>Citizen Registration</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+                    <div class="row row-cols-2 p-4">
+                        <div class="d-flex flex-column gap-3">
+                            <div>
+                                <label for="userName">Enter Your Name</label>
+                                <input type="text" formControlName="userName" id="userName" class="form-control">
+                                <div
+                                    *ngIf="registerForm.get('userName')?.invalid && (registerForm.get('userName')?.touched || registerForm.get('userName')?.dirty)">
+                                    <small *ngIf="registerForm.get('userName')?.errors?.['required']"
+                                        class="text-danger">Name is required.</small>
+                                    <small *ngIf="registerForm.get('userName')?.errors?.['minlength']"
+                                        class="text-danger">Name must be at least 4 characters long.</small>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="userPhone">Mobile Number</label>
+                                <input type="tel" formControlName="userPhone" id="userPhone" class="form-control"
+                                    maxlength="10" pattern="[0-9]{10}" inputmode="numeric" (input)="onInput($event)">
+                                <div
+                                    *ngIf="registerForm.get('userPhone')?.invalid && (registerForm.get('userPhone')?.touched || registerForm.get('userPhone')?.dirty)">
+                                    <small *ngIf="registerForm.get('userPhone')?.errors?.['required']"
+                                        class="text-danger">Mobile Number is required.</small>
+                                    <small *ngIf="registerForm.get('userPhone')?.errors?.['pattern']"
+                                        class="text-danger">Invalid Mobile Number</small>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="userEmail">Email Id</label>
+                                <input type="email" formControlName="userEmail" id="userEmail" class="form-control">
+                                <div
+                                    *ngIf="registerForm.get('userEmail')?.invalid && (registerForm.get('userEmail')?.touched || registerForm.get('userEmail')?.dirty)">
+                                    <small *ngIf="registerForm.get('userEmail')?.errors?.['required']"
+                                        class="text-danger">Email is required.</small>
+                                    <small *ngIf="registerForm.get('userEmail')?.errors?.['email']"
+                                        class="text-danger">Please enter a valid email address.</small>
+                                    <small *ngIf="registerForm.get('userEmail')?.errors?.['minlength']"
+                                        class="text-danger">Email must be at least 5 characters long.</small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mt-4">
+                            <div class="d-flex flex-column align-items-center">
+                                <img [src]="imagePreview || 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png?20200919003010'"
+                                    alt="Image Preview" class="img-fluid mb-3"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+
+                                <div class="position-relative">
+                                    <input type="file" id="photoPath" class="file-input"
+                                        (change)="onFileChange($event)">
+                                    <label for="photoPath" class="btn btn-primary btn-block no-bold">Upload
+                                        Photo</label>
+                                    <span class="file-name mt-2 d-block text-muted" *ngIf="fileName">{{ fileName
+                                        }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3 btn-group p-5">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </form>
+                <div class="mb-5 ms-auto text-center">
+                    <a routerLink="/home">Back to Homepage</a>
+                </div>
+            </div>
+        </div>
+        <div class="d-sm-none d-lg-block d-md-block">
+            <img src="https://img.freepik.com/premium-vector/illustration-sign-up-log-wireframe-idea-showcasing-various-ui-elements_1278800-10919.jpg?size=626&ext=jpg&ga=GA1.1.548235171.1724835808&semt=ais_hybrid"
+                alt="" style="object-fit: cover; height: 100%;" class="img-fluid rounded-end">
+        </div>
+    </div>
+</div>

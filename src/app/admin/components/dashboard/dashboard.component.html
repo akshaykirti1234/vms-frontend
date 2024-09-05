@@ -1,0 +1,57 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid  text-white">
+            <a type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                aria-controls="offcanvasSidebar">
+                <i class="fa-solid fa-bars fs-3"></i> </a>
+
+            <div class="me-auto ms-5">
+                <h3>Voting Management System</h3>
+            </div>
+
+            <div class="d-flex gap-4">
+                <span style="cursor: pointer;">{{userData?.userName}}
+                    <img [src]="getuserPhoto(userData.photoPath)" alt="profile" width="30" height="30"
+                        class="rounded rounded-circle">
+                </span>
+                <a class="nav-link" (click)="logout()" style="cursor: pointer;">Logout <i
+                        class="fa-solid fa-right-from-bracket"></i>
+
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start bg-dark " tabindex="-1" id="offcanvasSidebar"
+        aria-labelledby="offcanvasSidebarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-white" id="offcanvasSidebarLabel"> Hi {{ getFirstName(userData?.userName) }}
+            </h5>
+            <button type="button" class="btn btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Sidebar content goes here -->
+            <nav>
+                <ul class="list-unstyled">
+                    <li>
+                        <a routerLink="citizen" class="d-block py-2 text-white">View Citizen</a>
+                    </li>
+                    <li>
+                        <a routerLink="post" class="d-block py-2 text-white">Post</a>
+                    </li>
+                    <li>
+                        <a routerLink="candidate" class="d-block py-2 text-white">Candidate</a>
+                    </li>
+                    <li>
+                        <a routerLink="winners" class="d-block py-2 text-white">View Winners</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="h-100">
+        <router-outlet></router-outlet>
+    </main>
+</div>

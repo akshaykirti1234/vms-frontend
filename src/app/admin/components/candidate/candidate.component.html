@@ -1,0 +1,66 @@
+<div class="p-1 parent min-vh-100">
+    <div class="container m-auto mt-5 row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 p-3" style="height: 50vh;">
+        <div>
+            <div class="text-primary">
+                <h2>Create Candidate</h2>
+                <hr>
+            </div>
+            <div class="mt-4">
+                <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()" class="d-flex flex-column w-50 gap-3">
+                    <div>
+                        <label for="" class="fw-bold">Choose Candidate</label>
+                        <select class="form-select" formControlName="userId" id="">
+                            <option selected value="">-Select-</option>
+                            <option *ngFor="let user of userList" [value]="user.userId">{{user.userName}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="" class="fw-bold">Choose Post</label>
+                        <select class="form-select" formControlName="postId" id="">
+                            <option selected value="">-Select-</option>
+                            <option *ngFor="let post of postList" [value]="post.postId">{{post.postName}}</option>
+                        </select>
+                    </div>
+                    <div class="mt-2 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="errorMessage" class="mt-4 alert alert-danger">
+                {{errorMessage}}
+            </div>
+        </div>
+        <div class="h-100">
+            <div class="text-primary sticky-top">
+                <h2>Manage Candidate</h2>
+                <hr>
+            </div>
+            <div class="table-responsive h-100">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Sl#</th>
+                            <th>Post Name</th>
+                            <th>Candidate Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let candidate of candidateDetails; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{candidate.post.postName}}</td>
+                            <td>{{candidate.user.userName}}</td>
+                            <td class="d-flex gap-2">
+                                <button class="btn btn-sm btn-primary"
+                                    (click)="editCandidate(candidate.candidateId)">Edit</button>
+                                <button class="btn btn-sm btn-danger"
+                                    (click)="deleteCandidate(candidate.candidateId)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
